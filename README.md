@@ -1,30 +1,40 @@
-
 # NPTELPicker
-
-NPTELPicker is a course discovery and selection assistant designed to help college students find suitable NPTEL courses based on their interests and learning goals.
+### NPTEL Course Discovery and Selection Assistant
 
 ## Project Card
 
 **1. Product:**
-NPTELPicker - NPTEL Course Discovery Assistant.
 
-**2. User:**
-College students who want to improve their knowledge and skills through NPTEL online courses.
+NPTELPicker – An assistant that recommends suitable NPTEL courses to students.
+
+**2. Target User:**
+
+A second-year Computer Engineering student at Sanjivani University who needs to select one NPTEL course for credit transfer and wants to learn skills useful for placements.
 
 **3. Problem:**
-Students often find it difficult to discover and select suitable NPTEL courses from the large number of available courses. They need an easier way to explore courses according to their interests and learning requirements.
 
-**4. Data Source:**
+Students find it difficult to select suitable NPTEL courses from the large course catalogue. They need recommendations based on their branch, academic year, learning goals, course duration, credits and exam dates.
 
-- SWAYAM NPTEL Portal:
-  https://swayam.gov.in/nc_details/NPTEL
+**4. Data Sources:**
 
-- NPTEL Course Catalogue:
-  https://nptel.ac.in/courses/106102157
+- SWAYAM NPTEL Portal: https://swayam.gov.in/nc_details/NPTEL
+- NPTEL Course Page: https://nptel.ac.in/courses/106102157
+- Published Google Sheet exported as CSV.
+- Official NPTEL course pages and syllabus information.
 
 ## Project Goal
 
-To simplify NPTEL course discovery and help students identify relevant courses based on their interests.
+To recommend suitable NPTEL courses based on a student's branch, year and learning goals using official course information.
+
+## Main Features
+
+- NPTEL course recommendations.
+- Course search and filtering.
+- Syllabus-based question answering.
+- Course credit and weekly workload calculation.
+- Exam clash detection.
+- Semester planner calendar.
+- AI-powered course assistant.
 
 ## Day 1 Activities
 
@@ -37,6 +47,5 @@ To simplify NPTEL course discovery and help students identify relevant courses b
 ## Technologies Used
 
 - Python
-- Git
-- GitHub
+- Git and GitHub
 - Visual Studio Code

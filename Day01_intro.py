@@ -2,8 +2,9 @@
 # NPTELPicker - Project Introduction
 
 product = "NPTELPicker"
-user = "College Students"
-problem = "Finding and selecting suitable NPTEL courses is difficult."
+
+user = "Second-year Computer Engineering student at Sanjivani University"
+problem = "Students find it difficult to select NPTEL courses for credit transfer and placements."
 
 data_source1 = "SWAYAM NPTEL Portal"
 data_source2 = "NPTEL Course Catalogue"

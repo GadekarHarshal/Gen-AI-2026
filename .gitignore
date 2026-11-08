@@ -2,3 +2,11 @@
 __pycache__/
 *.pyc
 .env
+
+# Temporary backup files
+data/day2_records_backup.json
+data/day3_ingested_records.json
+data/course_metadata_from_sheet.csv
+
+# Downloaded HTML files
+data/raw/

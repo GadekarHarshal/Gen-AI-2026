@@ -1,16 +1,17 @@
-import json
+
+import csv
 import requests
 from pathlib import Path
 
-DATA_FILE = Path("data/records.json")
+CSV_FILE = Path("data/course_metadata.csv")
 RAW_FOLDER = Path("data/raw")
 
 
 def fetch_documents():
     RAW_FOLDER.mkdir(parents=True, exist_ok=True)
 
-    with open(DATA_FILE, "r", encoding="utf-8") as file:
-        records = json.load(file)
+    with open(CSV_FILE, "r", encoding="utf-8") as file:
+        records = list(csv.DictReader(file))
 
     downloaded = 0
 
@@ -30,7 +31,7 @@ def fetch_documents():
             print(f"Downloaded: {course_id}")
             downloaded += 1
 
-        except requests.exceptions.RequestException as error:
+        except (requests.exceptions.RequestException, KeyError) as error:
             print(f"Failed to download {course_id}: {error}")
 
     print(f"\nSuccessfully downloaded: {downloaded} documents")

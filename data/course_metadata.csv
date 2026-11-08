@@ -1,0 +1,21 @@
+course_id,course_name,discipline,institute,duration_weeks,course_url,level
+noc26_cs169,Advanced Distributed Systems,Computer Science And Engineering,"Indian Institute of Technology, Delhi",12,https://onlinecourses.nptel.ac.in/e-learning/preview/noc26_cs169,"UG, PG"
+noc26_mg122,Advanced R Programming for Data Analytics in Business,"Management, Finance, Data Science, Computer Science And Engineering","Indian Institute of Technology, Kanpur",12,https://onlinecourses.nptel.ac.in/e-learning/preview/noc26_mg122,"UG, PG"
+noc26_cs98,AI for Earth Observation,"Computer Science And Engineering, Civil Engineering, Environmental Science","Indian Institute of Technology, Delhi",12,https://onlinecourses.nptel.ac.in/e-learning/preview/noc26_cs98,"UG, PG"
+noc26_cs165,Approximation Algorithm,Computer Science And Engineering,"Indian Institute of Technology, Kharagpur",12,https://onlinecourses.nptel.ac.in/e-learning/preview/noc26_cs165,"UG, PG"
+noc26_cs148,Arithmetic Circuit Complexity,Computer Science And Engineering,"Indian Institute of Technology, Kanpur",12,https://onlinecourses.nptel.ac.in/e-learning/preview/noc26_cs148,"UG, PG"
+noc26_cs182,Artificial Intelligence: Foundations and Algorithms,Computer Science And Engineering,"Indian Institute of Technology, Delhi",12,https://onlinecourses.nptel.ac.in/e-learning/preview/noc26_cs182,UG
+noc26_cs132,Artificial Intelligence: Search Methods For Problem solving,Computer Science And Engineering,"Indian Institute of Technology, Madras",12,https://onlinecourses.nptel.ac.in/e-learning/preview/noc26_cs132,UG
+noc26_cs106,C Programming and Assembly Language,Computer Science And Engineering,"Indian Institute of Technology, Madras",4,https://onlinecourses.nptel.ac.in/e-learning/preview/noc26_cs106,UG
+noc26_cs175,C-Based VLSI Design,Computer Science And Engineering,"Indian Institute of Technology, Guwahati",12,https://onlinecourses.nptel.ac.in/e-learning/preview/noc26_cs175,"UG, PG"
+noc26_cs150,Cloud Computing,Computer Science And Engineering,"Indian Institute of Technology, Kharagpur",12,https://onlinecourses.nptel.ac.in/e-learning/preview/noc26_cs150,UG
+noc26_cs149,Computational Number Theory and Algebra,Computer Science And Engineering,"Indian Institute of Technology, Kanpur",12,https://onlinecourses.nptel.ac.in/e-learning/preview/noc26_cs149,"UG, PG"
+noc26_cs168,Computer Architecture,Computer Science And Engineering,"Indian Institute of Technology, Delhi",12,https://onlinecourses.nptel.ac.in/e-learning/preview/noc26_cs168,UG
+noc26_cs166,Computer Architecture and Organization,Computer Science And Engineering,"Indian Institute of Technology, Kharagpur",12,https://onlinecourses.nptel.ac.in/e-learning/preview/noc26_cs166,UG
+noc26_cs178,Computer Graphics,Computer Science And Engineering,"Indian Institute of Technology, Guwahati",8 Weeks (Rerun) + 4 Weeks (New),https://onlinecourses.nptel.ac.in/e-learning/preview/noc26_cs178,UG
+noc26_cs99,Computer Networks,Computer Science And Engineering,"Indian Institute of Technology, Indore",12,https://onlinecourses.nptel.ac.in/e-learning/preview/noc26_cs99,UG
+noc26_cs96,Computer System Optimizations for ML,Computer Science And Engineering,"Indian Institute of Science, Bangalore",12,https://onlinecourses.nptel.ac.in/e-learning/preview/noc26_cs96,"UG, PG"
+noc26_cs158,Computer Vision,Computer Science And Engineering,"Indian Institute of Technology, Kharagpur",12,https://onlinecourses.nptel.ac.in/e-learning/preview/noc26_cs158,UG
+noc26_cs117,Data Base Management System,Computer Science And Engineering,"Indian Institute of Technology, Kharagpur",8,https://onlinecourses.nptel.ac.in/e-learning/preview/noc26_cs117,"UG, PG"
+noc26_cs112,Data Science for Engineers,Computer Science And Engineering,"Indian Institute of Technology, Madras",8,https://onlinecourses.nptel.ac.in/e-learning/preview/noc26_cs112,"UG, PG"
+noc26_cs162,Data Structure and Algorithms using Java,Computer Science And Engineering,"Indian Institute of Technology, Kharagpur",12,https://onlinecourses.nptel.ac.in/e-learning/preview/noc26_cs162,UG

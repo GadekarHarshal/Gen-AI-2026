@@ -1,3 +1,4 @@
+
 from dataclasses import dataclass
 
 
@@ -9,4 +10,4 @@ class Record:
     institute: str
     duration_weeks: int | str
     course_url: str
-    
+    level: str

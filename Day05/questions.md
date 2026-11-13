@@ -18,7 +18,13 @@ These questions will be used to test our AI course recommendation assistant.
 
 **Q5.** I am a Second Year Computer Engineering student. Suggest one 12-week core course and one 4-week placement-useful course.
 
-**Q6.** Suggest an NPTEL course for a student interested in Artificial Intelligence and Machine Learning.
+**Q6. [UNANSWERABLE]** What is the exact examination date and examination centre for the AI for Earth Observation course (noc26_cs98)?
+
+**Expected Evaluation:**
+
+The system should identify that this question cannot be answered using the available course dataset because examination dates and examination centre details are not included in the course records.
+
+It should clearly state that the information is unavailable instead of making up an answer.
 
 ## 4. Course Comparison
 

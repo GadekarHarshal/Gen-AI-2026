@@ -75,3 +75,23 @@ The current questions endpoint only acknowledges received questions. LLM integra
 - [x] Tested all five API endpoints
 - [x] Verified successful API responses
 
+## Auditor Feedback Corrections
+
+The following improvements were made based on the Day 5 evaluation:
+
+1. Added an LLM workflow diagram showing Prompt → Tokens → Model → Answer.
+2. Added an unanswerable evaluation question (Q6).
+3. Explained why the current course dataset cannot answer Q6.
+4. Added the LLM documentation at the repository root under `docs/how_llms_work.md`.
+
+## Unanswerable Question Evaluation
+
+Q6 asks for the exact examination date and examination centre of a course.
+
+The current dataset does not contain these details. Therefore, NPTELPicker should respond that the information is unavailable rather than generating an unsupported answer.
+
+## Checkpoint
+
+Checkpoint 1 represents the completion of LLM fundamentals, sample question preparation, and API testing.
+
+The `checkpoint-1` Git tag will identify this stage of the project.

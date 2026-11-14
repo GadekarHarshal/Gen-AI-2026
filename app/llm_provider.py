@@ -8,8 +8,8 @@ from google import genai
 from google.genai import errors
 
 
-DAY06_FOLDER = Path(__file__).resolve().parents[1]
-ENV_FILE = DAY06_FOLDER / ".env"
+PROJECT_ROOT = Path(__file__).resolve().parents[1]
+ENV_FILE = PROJECT_ROOT / "Day06" / ".env"
 
 load_dotenv(ENV_FILE)
 

@@ -157,3 +157,45 @@ Gemini integration, FastAPI chat endpoint, structured responses, input validatio
 - Introduce vector search.
 - Build the RAG pipeline.
 - Improve answer accuracy with source-based retrieval.
+
+
+
+## Prompt Engineering and Evaluation
+
+The prompt files are maintained in the repository-level `prompts/` directory.
+
+### Prompt Files
+
+- `prompts/system_prompt.txt` – Main NPTELPicker instructions.
+- `prompts/course_recommendation.txt` – Task-specific course recommendation instructions.
+- `prompts/course_comparison.txt` – Task-specific course comparison instructions.
+
+### Prompt Comparison
+
+The prompt comparison is documented in:
+
+`eval/prompt_compare.md`
+
+It compares two prompt versions using 10 predefined NPTELPicker questions from `Day05/questions.md`.
+
+### Application Structure
+
+The FastAPI application is maintained in the repository-level `app/` directory.
+
+Run the application from the repository root:
+
+```bash
+uvicorn app.main:app --reload --port 8001
+```
+
+Open Swagger UI:
+
+`http://127.0.0.1:8001/docs`
+
+### Automated Tests
+
+Run:
+
+```bash
+python -m pytest Day06/tests/test_chat.py -v
+```

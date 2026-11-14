@@ -5,26 +5,32 @@ from pathlib import Path
 from fastapi import FastAPI, HTTPException
 from google.genai import errors
 
-from Day06.app.llm_provider import GeminiProvider
-from Day06.app.schemas import ChatRequest, ChatResponse
+from app.llm_provider import GeminiProvider
+from app.schemas import ChatRequest, ChatResponse
 
 
-# Project paths
-PROJECT_ROOT = Path(__file__).resolve().parents[2]
+PROJECT_ROOT = Path(__file__).resolve().parents[1]
 
 DATA_FILE = PROJECT_ROOT / "data" / "records.json"
-PROMPT_FILE = PROJECT_ROOT / "Day06" / "prompts" / "system_prompt.txt"
+
+PROMPT_FILE = PROJECT_ROOT / "prompts" / "system_prompt.txt"
+
+RECOMMENDATION_PROMPT_FILE = (
+    PROJECT_ROOT / "prompts" / "course_recommendation.txt"
+)
+
+COMPARISON_PROMPT_FILE = (
+    PROJECT_ROOT / "prompts" / "course_comparison.txt"
+)
 
 
-# Create FastAPI application
 app = FastAPI(
-    title="NPTELPicker Day 6",
+    title="NPTELPicker AI Assistant",
     description="AI-powered NPTEL course assistant using Google Gemini",
     version="1.0.0"
 )
 
 
-# Load course records
 def load_courses():
     try:
         with open(DATA_FILE, "r", encoding="utf-8") as file:
@@ -36,7 +42,6 @@ def load_courses():
         )
 
 
-# Load system prompt
 def load_system_prompt():
     try:
         return PROMPT_FILE.read_text(encoding="utf-8")
@@ -47,7 +52,36 @@ def load_system_prompt():
         )
 
 
-# Initialize Gemini provider
+def load_task_prompt(question: str):
+    question_lower = question.lower()
+
+    comparison_keywords = [
+        "compare",
+        "comparison",
+        "difference",
+        "differences",
+        "which is better",
+        "versus",
+        "vs"
+    ]
+
+    recommendation_keywords = [
+        "suggest",
+        "recommend",
+        "recommendation",
+        "course for",
+        "suitable course"
+    ]
+
+    if any(word in question_lower for word in comparison_keywords):
+        return COMPARISON_PROMPT_FILE.read_text(encoding="utf-8")
+
+    if any(word in question_lower for word in recommendation_keywords):
+        return RECOMMENDATION_PROMPT_FILE.read_text(encoding="utf-8")
+
+    return ""
+
+
 try:
     gemini = GeminiProvider()
 except ValueError as error:
@@ -83,6 +117,7 @@ def chat(request: ChatRequest):
     try:
         courses = load_courses()
         system_prompt = load_system_prompt()
+        task_prompt = load_task_prompt(request.question)
 
         course_context = json.dumps(
             courses,
@@ -92,6 +127,9 @@ def chat(request: ChatRequest):
 
         full_prompt = f"""
 {system_prompt}
+
+TASK-SPECIFIC INSTRUCTIONS:
+{task_prompt}
 
 AVAILABLE NPTEL COURSE DATA:
 {course_context}
@@ -104,7 +142,6 @@ Return only the required JSON response.
 
         result = gemini.generate_response(full_prompt)
 
-        # Parse Gemini JSON response
         try:
             result = result.strip()
 

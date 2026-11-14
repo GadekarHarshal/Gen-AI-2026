@@ -3,8 +3,7 @@ import json
 
 from fastapi.testclient import TestClient
 
-from Day06.app import main
-
+from app import main
 
 client = TestClient(main.app)
 

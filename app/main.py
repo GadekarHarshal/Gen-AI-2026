@@ -2,7 +2,7 @@
 import json
 from pathlib import Path
 
-from fastapi import FastAPI, HTTPException
+from fastapi import FastAPI, HTTPException, Query
 from google.genai import errors
 
 from app.llm_provider import GeminiProvider
@@ -172,5 +172,41 @@ Return only the required JSON response.
     except (RuntimeError, OSError) as error:
         raise HTTPException(
             status_code=500,
+            detail=str(error)
+        )
+
+
+@app.get("/search/semantic")
+def search_semantic(q: str = Query(..., min_length=1)):
+
+    try:
+        from app.vectorstore import semantic_search, get_collection_count
+
+        if get_collection_count() == 0:
+            raise HTTPException(
+                status_code=503,
+                detail="Vector database is empty. Index courses first."
+            )
+
+        results = semantic_search(q)
+
+        return {
+            "query": q,
+            "total_results": len(results),
+            "results": results
+        }
+
+    except HTTPException:
+        raise
+
+    except errors.APIError as error:
+        raise HTTPException(
+            status_code=503,
+            detail=f"Embedding service unavailable: {error}"
+        )
+
+    except ValueError as error:
+        raise HTTPException(
+            status_code=400,
             detail=str(error)
         )

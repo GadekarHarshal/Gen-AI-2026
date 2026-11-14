@@ -3,3 +3,6 @@ fastapi
 uvicorn
 pandas
 scikit-learn
+chromadb
+google-genai
+python-dotenv

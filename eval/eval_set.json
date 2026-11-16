@@ -1,0 +1,78 @@
+
+[
+    {
+        "id": 1,
+        "question": "Which courses cover artificial intelligence?",
+        "expected_behavior": "answer_from_context"
+    },
+    {
+        "id": 2,
+        "question": "Is Joy of Computing using Python suitable for beginners?",
+        "expected_behavior": "say_unknown"
+    },
+    {
+        "id": 3,
+        "question": "How many credits are recommended for an 8-week NPTEL course?",
+        "expected_behavior": "say_unknown"
+    },
+    {
+        "id": 4,
+        "question": "How many credits can I earn by completing a 12-week NPTEL course?",
+        "expected_behavior": "say_unknown"
+    },
+    {
+        "id": 5,
+        "question": "Suggest one 12-week core course for a Second Year Computer Engineering student.",
+        "expected_behavior": "say_unknown"
+    },
+    {
+        "id": 6,
+        "question": "What is the exact examination date and examination centre for AI for Earth Observation (noc26_cs98)?",
+        "expected_behavior": "say_unknown"
+    },
+    {
+        "id": 7,
+        "question": "Compare Cloud Computing by IIT Kharagpur and Software Testing by IIIT Bangalore.",
+        "expected_behavior": "say_unknown"
+    },
+    {
+        "id": 8,
+        "question": "Which is better for placements: Python Programming or Data Structures and Algorithms?",
+        "expected_behavior": "say_unknown"
+    },
+    {
+        "id": 9,
+        "question": "Will Savitribai Phule Pune University accept NPTEL courses for credit transfer?",
+        "expected_behavior": "say_unknown"
+    },
+    {
+        "id": 10,
+        "question": "Suggest an NPTEL course for a student interested in machine learning.",
+        "expected_behavior": "answer_from_context"
+    },
+    {
+        "id": 11,
+        "question": "Which courses are offered by IIT Delhi?",
+        "expected_behavior": "answer_from_context"
+    },
+    {
+        "id": 12,
+        "question": "Which courses have a duration of 12 weeks?",
+        "expected_behavior": "answer_from_context"
+    },
+    {
+        "id": 13,
+        "question": "Find undergraduate-level courses in Computer Science and Engineering.",
+        "expected_behavior": "answer_from_context"
+    },
+    {
+        "id": 14,
+        "question": "What topics are taught in Week 9 of Computer Architecture?",
+        "expected_behavior": "say_unknown"
+    },
+    {
+        "id": 15,
+        "question": "What is the examination centre for Computer Networks?",
+        "expected_behavior": "say_unknown"
+    }
+]

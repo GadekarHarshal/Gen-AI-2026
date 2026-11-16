@@ -1,0 +1,450 @@
+[
+    {
+        "configuration": "Config A",
+        "settings": {
+            "chunk_size": 250,
+            "overlap": 25,
+            "top_k": 3
+        },
+        "total_questions": 15,
+        "passed": 15,
+        "failed_or_review": 0,
+        "accuracy_percentage": 100.0,
+        "results": [
+            {
+                "id": 1,
+                "question": "Which courses cover artificial intelligence?",
+                "expected_behavior": "answer_from_context",
+                "answer": "The courses that cover artificial intelligence are:\n\n1. Artificial Intelligence: Foundations and Algorithms [1]\n2. Artificial Intelligence: Search Methods For Problem solving [2]\n3. AI for Earth Observation [3]",
+                "sources": [
+                    "Artificial Intelligence: Foundations and Algorithms",
+                    "Artificial Intelligence: Search Methods For Problem solving",
+                    "AI for Earth Observation"
+                ],
+                "passed": true,
+                "evaluation_reason": "Answer contains citations."
+            },
+            {
+                "id": 2,
+                "question": "Is Joy of Computing using Python suitable for beginners?",
+                "expected_behavior": "say_unknown",
+                "answer": "I don't know. The available course information does not contain the answer.",
+                "sources": [
+                    "C Programming and Assembly Language",
+                    "Cloud Computing",
+                    "Cloud Computing"
+                ],
+                "passed": true,
+                "evaluation_reason": "Correctly identified missing information."
+            },
+            {
+                "id": 3,
+                "question": "How many credits are recommended for an 8-week NPTEL course?",
+                "expected_behavior": "say_unknown",
+                "answer": "I don't know. The available course information does not contain the answer.",
+                "sources": [
+                    "Advanced R Programming for Data Analytics in Business",
+                    "AI for Earth Observation",
+                    "Data Science for Engineers"
+                ],
+                "passed": true,
+                "evaluation_reason": "Correctly identified missing information."
+            },
+            {
+                "id": 4,
+                "question": "How many credits can I earn by completing a 12-week NPTEL course?",
+                "expected_behavior": "say_unknown",
+                "answer": "I don't know. The available course information does not contain the answer.",
+                "sources": [
+                    "Advanced R Programming for Data Analytics in Business",
+                    "Computer Networks",
+                    "Computer Architecture"
+                ],
+                "passed": true,
+                "evaluation_reason": "Correctly identified missing information."
+            },
+            {
+                "id": 5,
+                "question": "Suggest one 12-week core course for a Second Year Computer Engineering student.",
+                "expected_behavior": "say_unknown",
+                "answer": "I don't know. The available course information does not contain the answer.",
+                "sources": [
+                    "Advanced R Programming for Data Analytics in Business",
+                    "C-Based VLSI Design",
+                    "Computer Architecture"
+                ],
+                "passed": true,
+                "evaluation_reason": "Correctly identified missing information."
+            },
+            {
+                "id": 6,
+                "question": "What is the exact examination date and examination centre for AI for Earth Observation (noc26_cs98)?",
+                "expected_behavior": "say_unknown",
+                "answer": "I don't know. The available course information does not contain the answer.",
+                "sources": [
+                    "AI for Earth Observation",
+                    "Computer Networks",
+                    "Computer Architecture"
+                ],
+                "passed": true,
+                "evaluation_reason": "Correctly identified missing information."
+            },
+            {
+                "id": 7,
+                "question": "Compare Cloud Computing by IIT Kharagpur and Software Testing by IIIT Bangalore.",
+                "expected_behavior": "say_unknown",
+                "answer": "I don't know. The available course information does not contain the answer.",
+                "sources": [
+                    "Cloud Computing",
+                    "Computer Architecture and Organization",
+                    "Approximation Algorithm"
+                ],
+                "passed": true,
+                "evaluation_reason": "Correctly identified missing information."
+            },
+            {
+                "id": 8,
+                "question": "Which is better for placements: Python Programming or Data Structures and Algorithms?",
+                "expected_behavior": "say_unknown",
+                "answer": "I don't know. The available course information does not contain the answer.",
+                "sources": [
+                    "Data Structure and Algorithms using Java",
+                    "Data Science for Engineers",
+                    "Approximation Algorithm"
+                ],
+                "passed": true,
+                "evaluation_reason": "Correctly identified missing information."
+            },
+            {
+                "id": 9,
+                "question": "Will Savitribai Phule Pune University accept NPTEL courses for credit transfer?",
+                "expected_behavior": "say_unknown",
+                "answer": "I don't know. The available course information does not contain the answer.",
+                "sources": [
+                    "Artificial Intelligence: Foundations and Algorithms",
+                    "Computer Networks",
+                    "Approximation Algorithm"
+                ],
+                "passed": true,
+                "evaluation_reason": "Correctly identified missing information."
+            },
+            {
+                "id": 10,
+                "question": "Suggest an NPTEL course for a student interested in machine learning.",
+                "expected_behavior": "answer_from_context",
+                "answer": "Computer System Optimizations for ML [1]",
+                "sources": [
+                    "Computer System Optimizations for ML",
+                    "AI for Earth Observation",
+                    "Advanced R Programming for Data Analytics in Business"
+                ],
+                "passed": true,
+                "evaluation_reason": "Answer contains citations."
+            },
+            {
+                "id": 11,
+                "question": "Which courses are offered by IIT Delhi?",
+                "expected_behavior": "answer_from_context",
+                "answer": "Based on the available course information, the courses offered by IIT Delhi are:\n\n1. AI for Earth Observation [1]\n2. Computer Architecture [2]\n3. Artificial Intelligence: Foundations and Algorithms [3]",
+                "sources": [
+                    "AI for Earth Observation",
+                    "Computer Architecture",
+                    "Artificial Intelligence: Foundations and Algorithms"
+                ],
+                "passed": true,
+                "evaluation_reason": "Answer contains citations."
+            },
+            {
+                "id": 12,
+                "question": "Which courses have a duration of 12 weeks?",
+                "expected_behavior": "answer_from_context",
+                "answer": "Advanced R Programming for Data Analytics in Business [1]",
+                "sources": [
+                    "Advanced R Programming for Data Analytics in Business",
+                    "Computer Networks",
+                    "AI for Earth Observation"
+                ],
+                "passed": true,
+                "evaluation_reason": "Answer contains citations."
+            },
+            {
+                "id": 13,
+                "question": "Find undergraduate-level courses in Computer Science and Engineering.",
+                "expected_behavior": "answer_from_context",
+                "answer": "Based on the provided context, the undergraduate-level (UG) courses in Computer Science and Engineering are:\n\n- Computer Networks (Course ID: noc26_cs99) [1]\n- Artificial Intelligence: Foundations and Algorithms (Course ID: noc26_cs182) [2]\n- C Programming and Assembly Language (Course ID: noc26_cs106) [3]",
+                "sources": [
+                    "Computer Networks",
+                    "Artificial Intelligence: Foundations and Algorithms",
+                    "C Programming and Assembly Language"
+                ],
+                "passed": true,
+                "evaluation_reason": "Answer contains citations."
+            },
+            {
+                "id": 14,
+                "question": "What topics are taught in Week 9 of Computer Architecture?",
+                "expected_behavior": "say_unknown",
+                "answer": "I don't know. The available course information does not contain the answer.",
+                "sources": [
+                    "Computer Architecture",
+                    "Computer Architecture and Organization",
+                    "Computational Number Theory and Algebra"
+                ],
+                "passed": true,
+                "evaluation_reason": "Correctly identified missing information."
+            },
+            {
+                "id": 15,
+                "question": "What is the examination centre for Computer Networks?",
+                "expected_behavior": "say_unknown",
+                "answer": "I don't know. The available course information does not contain the answer.",
+                "sources": [
+                    "Computer Networks",
+                    "Computer Architecture",
+                    "Cloud Computing"
+                ],
+                "passed": true,
+                "evaluation_reason": "Correctly identified missing information."
+            }
+        ]
+    },
+    {
+        "configuration": "Config B",
+        "settings": {
+            "chunk_size": 500,
+            "overlap": 50,
+            "top_k": 5
+        },
+        "total_questions": 15,
+        "passed": 15,
+        "failed_or_review": 0,
+        "accuracy_percentage": 100.0,
+        "results": [
+            {
+                "id": 1,
+                "question": "Which courses cover artificial intelligence?",
+                "expected_behavior": "answer_from_context",
+                "answer": "Based on the available information, the courses that cover artificial intelligence are:\n\n* Artificial Intelligence: Foundations and Algorithms [1]\n* Artificial Intelligence: Search Methods For Problem solving [2]\n* AI for Earth Observation [3]",
+                "sources": [
+                    "Artificial Intelligence: Foundations and Algorithms",
+                    "Artificial Intelligence: Search Methods For Problem solving",
+                    "AI for Earth Observation",
+                    "Computer System Optimizations for ML",
+                    "Data Science for Engineers"
+                ],
+                "passed": true,
+                "evaluation_reason": "Answer contains citations."
+            },
+            {
+                "id": 2,
+                "question": "Is Joy of Computing using Python suitable for beginners?",
+                "expected_behavior": "say_unknown",
+                "answer": "I don't know. The available course information does not contain the answer.",
+                "sources": [
+                    "Cloud Computing",
+                    "Data Structure and Algorithms using Java",
+                    "Arithmetic Circuit Complexity",
+                    "C Programming and Assembly Language",
+                    "Computational Number Theory and Algebra"
+                ],
+                "passed": true,
+                "evaluation_reason": "Correctly identified missing information."
+            },
+            {
+                "id": 3,
+                "question": "How many credits are recommended for an 8-week NPTEL course?",
+                "expected_behavior": "say_unknown",
+                "answer": "I don't know. The available course information does not contain the answer.",
+                "sources": [
+                    "Data Science for Engineers",
+                    "Computer Graphics",
+                    "Data Structure and Algorithms using Java",
+                    "Data Base Management System",
+                    "Computer Networks"
+                ],
+                "passed": true,
+                "evaluation_reason": "Correctly identified missing information."
+            },
+            {
+                "id": 4,
+                "question": "How many credits can I earn by completing a 12-week NPTEL course?",
+                "expected_behavior": "say_unknown",
+                "answer": "I don't know. The available course information does not contain the answer.",
+                "sources": [
+                    "Computer Networks",
+                    "Computer Architecture",
+                    "Cloud Computing",
+                    "Data Science for Engineers",
+                    "Data Structure and Algorithms using Java"
+                ],
+                "passed": true,
+                "evaluation_reason": "Correctly identified missing information."
+            },
+            {
+                "id": 5,
+                "question": "Suggest one 12-week core course for a Second Year Computer Engineering student.",
+                "expected_behavior": "say_unknown",
+                "answer": "I don't know. The available course information does not contain the answer.",
+                "sources": [
+                    "C-Based VLSI Design",
+                    "Computer Architecture",
+                    "Computer Networks",
+                    "Data Structure and Algorithms using Java",
+                    "Cloud Computing"
+                ],
+                "passed": true,
+                "evaluation_reason": "Correctly identified missing information."
+            },
+            {
+                "id": 6,
+                "question": "What is the exact examination date and examination centre for AI for Earth Observation (noc26_cs98)?",
+                "expected_behavior": "say_unknown",
+                "answer": "I don't know. The available course information does not contain the answer.",
+                "sources": [
+                    "AI for Earth Observation",
+                    "Artificial Intelligence: Foundations and Algorithms",
+                    "Computer Vision",
+                    "Computer System Optimizations for ML",
+                    "Artificial Intelligence: Search Methods For Problem solving"
+                ],
+                "passed": true,
+                "evaluation_reason": "Correctly identified missing information."
+            },
+            {
+                "id": 7,
+                "question": "Compare Cloud Computing by IIT Kharagpur and Software Testing by IIIT Bangalore.",
+                "expected_behavior": "say_unknown",
+                "answer": "I don't know. The available course information does not contain the answer.",
+                "sources": [
+                    "Cloud Computing",
+                    "Computer Architecture and Organization",
+                    "Data Structure and Algorithms using Java",
+                    "Approximation Algorithm",
+                    "Data Base Management System"
+                ],
+                "passed": true,
+                "evaluation_reason": "Correctly identified missing information."
+            },
+            {
+                "id": 8,
+                "question": "Which is better for placements: Python Programming or Data Structures and Algorithms?",
+                "expected_behavior": "say_unknown",
+                "answer": "I don't know. The available course information does not contain the answer.",
+                "sources": [
+                    "Data Structure and Algorithms using Java",
+                    "Data Science for Engineers",
+                    "Approximation Algorithm",
+                    "Advanced R Programming for Data Analytics in Business",
+                    "Advanced Distributed Systems"
+                ],
+                "passed": true,
+                "evaluation_reason": "Correctly identified missing information."
+            },
+            {
+                "id": 9,
+                "question": "Will Savitribai Phule Pune University accept NPTEL courses for credit transfer?",
+                "expected_behavior": "say_unknown",
+                "answer": "I don't know. The available course information does not contain the answer.",
+                "sources": [
+                    "Computer Networks",
+                    "Data Structure and Algorithms using Java",
+                    "Data Science for Engineers",
+                    "Advanced Distributed Systems",
+                    "Computer Architecture"
+                ],
+                "passed": true,
+                "evaluation_reason": "Correctly identified missing information."
+            },
+            {
+                "id": 10,
+                "question": "Suggest an NPTEL course for a student interested in machine learning.",
+                "expected_behavior": "answer_from_context",
+                "answer": "Based on the available information, here are the NPTEL courses related to machine learning and its optimizations:\n\n* **Computer System Optimizations for ML** [1]\n* **AI for Earth Observation** [2]\n* **Artificial Intelligence: Foundations and Algorithms** [3]\n* **Data Science for Engineers** [4]\n* **Artificial Intelligence: Search Methods For Problem solving** [5]",
+                "sources": [
+                    "Computer System Optimizations for ML",
+                    "AI for Earth Observation",
+                    "Artificial Intelligence: Foundations and Algorithms",
+                    "Data Science for Engineers",
+                    "Artificial Intelligence: Search Methods For Problem solving"
+                ],
+                "passed": true,
+                "evaluation_reason": "Answer contains citations."
+            },
+            {
+                "id": 11,
+                "question": "Which courses are offered by IIT Delhi?",
+                "expected_behavior": "answer_from_context",
+                "answer": "The courses offered by IIT Delhi are:\n- AI for Earth Observation [1]\n- Artificial Intelligence: Foundations and Algorithms [2]\n- Computer Architecture [3]\n- Advanced Distributed Systems [4]",
+                "sources": [
+                    "AI for Earth Observation",
+                    "Artificial Intelligence: Foundations and Algorithms",
+                    "Computer Architecture",
+                    "Advanced Distributed Systems",
+                    "Data Structure and Algorithms using Java"
+                ],
+                "passed": true,
+                "evaluation_reason": "Answer contains citations."
+            },
+            {
+                "id": 12,
+                "question": "Which courses have a duration of 12 weeks?",
+                "expected_behavior": "answer_from_context",
+                "answer": "Based on the provided context, the following courses have a duration of 12 weeks:\n\n- Artificial Intelligence: Search Methods For Problem solving [1]\n- C-Based VLSI Design [2]\n- Computer Networks [3]\n- Advanced R Programming for Data Analytics in Business [4]\n- Cloud Computing [5]",
+                "sources": [
+                    "Artificial Intelligence: Search Methods For Problem solving",
+                    "C-Based VLSI Design",
+                    "Computer Networks",
+                    "Advanced R Programming for Data Analytics in Business",
+                    "Cloud Computing"
+                ],
+                "passed": true,
+                "evaluation_reason": "Answer contains citations."
+            },
+            {
+                "id": 13,
+                "question": "Find undergraduate-level courses in Computer Science and Engineering.",
+                "expected_behavior": "answer_from_context",
+                "answer": "Based on the available course information, the undergraduate-level (UG) courses in Computer Science and Engineering are:\n\n- Computer Networks [1]\n- Artificial Intelligence: Foundations and Algorithms [2]\n- Artificial Intelligence: Search Methods For Problem solving [3]\n- C Programming and Assembly Language [4]\n- Computer Vision [5]",
+                "sources": [
+                    "Computer Networks",
+                    "Artificial Intelligence: Foundations and Algorithms",
+                    "Artificial Intelligence: Search Methods For Problem solving",
+                    "C Programming and Assembly Language",
+                    "Computer Vision"
+                ],
+                "passed": true,
+                "evaluation_reason": "Answer contains citations."
+            },
+            {
+                "id": 14,
+                "question": "What topics are taught in Week 9 of Computer Architecture?",
+                "expected_behavior": "say_unknown",
+                "answer": "I don't know. The available course information does not contain the answer.",
+                "sources": [
+                    "Computer Architecture",
+                    "Computer Architecture and Organization",
+                    "Computer Networks",
+                    "C-Based VLSI Design",
+                    "Advanced Distributed Systems"
+                ],
+                "passed": true,
+                "evaluation_reason": "Correctly identified missing information."
+            },
+            {
+                "id": 15,
+                "question": "What is the examination centre for Computer Networks?",
+                "expected_behavior": "say_unknown",
+                "answer": "I don't know. The available course information does not contain the answer.",
+                "sources": [
+                    "Computer Networks",
+                    "Advanced Distributed Systems",
+                    "Computational Number Theory and Algebra",
+                    "Computer Architecture",
+                    "Cloud Computing"
+                ],
+                "passed": true,
+                "evaluation_reason": "Correctly identified missing information."
+            }
+        ]
+    }
+]

@@ -11,3 +11,5 @@ data/course_metadata_from_sheet.csv
 # Downloaded HTML files
 data/raw/
 data/chroma_db/
+# Evaluation database
+data/eval_chroma_db/

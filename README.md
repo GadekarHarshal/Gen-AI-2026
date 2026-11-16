@@ -1,3 +1,4 @@
+
 # NPTELPicker
 ### NPTEL Course Discovery and Selection Assistant
 
@@ -5,7 +6,7 @@
 
 **1. Product:**
 
-NPTELPicker – An assistant that recommends suitable NPTEL courses to students.
+NPTELPicker – An AI-powered assistant that helps students discover and select suitable NPTEL courses.
 
 **2. Target User:**
 
@@ -20,21 +21,21 @@ Students find it difficult to select suitable NPTEL courses from the large cours
 - SWAYAM NPTEL Portal: https://swayam.gov.in/nc_details/NPTEL
 - NPTEL Course Page: https://nptel.ac.in/courses/106102157
 - Published Google Sheet exported as CSV.
-- Official NPTEL course pages and syllabus information.
+- Collected NPTEL course metadata.
 
 ## Project Goal
 
-To recommend suitable NPTEL courses based on a student's branch, year and learning goals using official course information.
+To recommend suitable NPTEL courses based on a student's branch, year and learning goals using available course information.
 
 ## Main Features
 
 - NPTEL course recommendations.
 - Course search and filtering.
-- Syllabus-based question answering.
-- Course credit and weekly workload calculation.
-- Exam clash detection.
-- Semester planner calendar.
-- AI-powered course assistant.
+- Retrieval-Augmented Generation (RAG).
+- Semantic search using embeddings.
+- AI-powered question answering with source citations.
+- Course information retrieval using ChromaDB.
+- Evaluation of RAG configurations.
 
 ## Day 1 Activities
 
@@ -44,8 +45,43 @@ To recommend suitable NPTEL courses based on a student's branch, year and learni
 - Created a menu-driven program using a while loop.
 - Implemented conditional statements using if/elif/else.
 
+## Day 8 Activities – RAG and Evaluation
+
+- Implemented the RAG pipeline in `app/rag.py`.
+- Retrieved relevant course information from ChromaDB.
+- Integrated Gemini to generate answers using retrieved context.
+- Added the `POST /ask` API endpoint.
+- Implemented source citations in generated answers.
+- Added a rule to return "I don't know" when the available information does not contain the answer.
+- Created an evaluation dataset containing 15 questions.
+- Compared two RAG configurations.
+
+### RAG Configuration Comparison
+
+| Parameter | Config A | Config B |
+|---|---:|---:|
+| Chunk Size | 250 | 500 |
+| Overlap | 25 | 50 |
+| Top-K | 3 | 5 |
+| Total Chunks | 40 | 20 |
+| Questions Tested | 15 | 15 |
+| Passed | 15 | 15 |
+| Accuracy | 100% | 100% |
+
+**Selected Configuration: Config B**
+
+Config B was selected because it achieved the same evaluation score while generating fewer chunks. It also retrieves more context per question.
+
+**Evaluation Note:** The evaluation checks expected response behaviour, including citations and handling of unavailable information. It does not independently verify every factual statement.
+
 ## Technologies Used
 
 - Python
+- FastAPI
+- Gemini API
+- ChromaDB
+- Embeddings
+- Retrieval-Augmented Generation (RAG)
+- Scikit-learn
 - Git and GitHub
 - Visual Studio Code

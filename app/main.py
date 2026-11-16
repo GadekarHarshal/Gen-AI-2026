@@ -210,3 +210,52 @@ def search_semantic(q: str = Query(..., min_length=1)):
             status_code=400,
             detail=str(error)
         )
+
+
+@app.post("/ask")
+def ask(request: ChatRequest):
+
+    if gemini is None:
+        raise HTTPException(
+            status_code=503,
+            detail="Gemini API is not configured."
+        )
+
+    try:
+        from app.rag import generate_rag_answer
+        from app.vectorstore import get_collection_count
+
+        if get_collection_count() == 0:
+            raise HTTPException(
+                status_code=503,
+                detail="Vector database is empty. Index courses first."
+            )
+
+        result = generate_rag_answer(
+            question=request.question,
+            provider=gemini,
+            top_k=5
+        )
+
+        return result
+
+    except HTTPException:
+        raise
+
+    except errors.APIError as error:
+        raise HTTPException(
+            status_code=503,
+            detail=f"RAG service unavailable: {error}"
+        )
+
+    except ValueError as error:
+        raise HTTPException(
+            status_code=400,
+            detail=str(error)
+        )
+
+    except RuntimeError as error:
+        raise HTTPException(
+            status_code=502,
+            detail=str(error)
+        )

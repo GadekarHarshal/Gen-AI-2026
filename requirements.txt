@@ -6,3 +6,4 @@ scikit-learn
 chromadb
 google-genai
 python-dotenv
+langgraph

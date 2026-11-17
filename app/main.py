@@ -1,12 +1,16 @@
 
 import json
+import uuid
 from pathlib import Path
+from typing import Optional
 
 from fastapi import FastAPI, HTTPException, Query
 from google.genai import errors
+from pydantic import BaseModel, Field
 
 from app.llm_provider import GeminiProvider
 from app.schemas import ChatRequest, ChatResponse
+from app.graph import run_graph, resume_graph
 
 
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
@@ -26,9 +30,20 @@ COMPARISON_PROMPT_FILE = (
 
 app = FastAPI(
     title="NPTELPicker AI Assistant",
-    description="AI-powered NPTEL course assistant using Google Gemini",
-    version="1.0.0"
+    description="AI-powered NPTEL course assistant using Google Gemini and LangGraph",
+    version="1.1.0"
 )
+
+
+# Request models for LangGraph endpoints
+class AgentRequest(BaseModel):
+    question: str = Field(min_length=3, max_length=1000)
+    thread_id: Optional[str] = None
+
+
+class ApprovalRequest(BaseModel):
+    thread_id: str = Field(min_length=1)
+    approved: bool
 
 
 def load_courses():
@@ -257,5 +272,90 @@ def ask(request: ChatRequest):
     except RuntimeError as error:
         raise HTTPException(
             status_code=502,
+            detail=str(error)
+        )
+
+
+# NEW: LangGraph agent endpoint
+@app.post("/agent")
+def agent(request: AgentRequest):
+
+    if gemini is None:
+        raise HTTPException(
+            status_code=503,
+            detail="Gemini API is not configured."
+        )
+
+    thread_id = request.thread_id or str(uuid.uuid4())
+
+    try:
+        result = run_graph(
+            question=request.question,
+            provider=gemini,
+            thread_id=thread_id
+        )
+
+        if result.get("__interrupt__"):
+            approval_data = result["__interrupt__"][0].value
+
+            return {
+                "status": "approval_required",
+                "thread_id": thread_id,
+                "approval": approval_data
+            }
+
+        return {
+            "status": "completed",
+            "thread_id": thread_id,
+            "tool_used": result.get("tool"),
+            "answer": result.get("answer"),
+            "sources": result.get("sources", []),
+            "data": result.get("data")
+        }
+
+    except errors.APIError as error:
+        raise HTTPException(
+            status_code=503,
+            detail=f"Agent service unavailable: {error}"
+        )
+
+    except ValueError as error:
+        raise HTTPException(
+            status_code=400,
+            detail=str(error)
+        )
+
+
+# NEW: Resume LangGraph after human approval
+@app.post("/agent/approve")
+def agent_approve(request: ApprovalRequest):
+
+    try:
+        result = resume_graph(
+            thread_id=request.thread_id,
+            approved=request.approved
+        )
+
+        if result.get("__interrupt__"):
+            approval_data = result["__interrupt__"][0].value
+
+            return {
+                "status": "approval_required",
+                "thread_id": request.thread_id,
+                "approval": approval_data
+            }
+
+        return {
+            "status": "completed",
+            "thread_id": request.thread_id,
+            "tool_used": result.get("tool"),
+            "answer": result.get("answer"),
+            "sources": result.get("sources", []),
+            "data": result.get("data")
+        }
+
+    except ValueError as error:
+        raise HTTPException(
+            status_code=400,
             detail=str(error)
         )

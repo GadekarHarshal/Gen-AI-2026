@@ -85,3 +85,31 @@ Config B was selected because it achieved the same evaluation score while genera
 - Scikit-learn
 - Git and GitHub
 - Visual Studio Code
+
+
+## Day 10 - Streamlit UI and Semester Planner
+
+### Features
+- Streamlit-based AI Chat Assistant.
+- FastAPI and LangGraph agent integration.
+- Source citations in chat responses.
+- Persistent thumbs-up and thumbs-down feedback.
+- Semester Planner with course selection.
+- Interactive course timeline using Altair.
+- Manual exam-date entry and exam clash detection.
+- Weekly workload estimation and warnings.
+- Semester plan export to CSV.
+
+### Testing
+- 8 automated tests passed.
+- Feedback persistence tests.
+- Exam clash detection tests.
+- Weekly workload calculation tests.
+
+### Run the Streamlit Application
+
+```bash
+python -m streamlit run ui/app.py
+```
+
+Open http://localhost:8501 in your browser.

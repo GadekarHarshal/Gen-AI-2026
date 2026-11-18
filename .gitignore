@@ -13,3 +13,4 @@ data/raw/
 data/chroma_db/
 # Evaluation database
 data/eval_chroma_db/
+data/feedback.json

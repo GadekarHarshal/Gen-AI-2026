@@ -2,8 +2,9 @@
 import csv
 import json
 import re
-from pathlib import Path
 from dataclasses import asdict
+from pathlib import Path
+
 from app.models import Record
 
 CSV_FILE = Path("data/course_metadata.csv")

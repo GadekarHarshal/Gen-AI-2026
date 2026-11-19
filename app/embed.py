@@ -5,7 +5,6 @@ from pathlib import Path
 from dotenv import load_dotenv
 from google import genai
 
-
 ENV_FILE = Path(__file__).resolve().parent.parent / "Day06" / ".env"
 
 load_dotenv(ENV_FILE)

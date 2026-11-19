@@ -7,7 +7,6 @@ from dotenv import load_dotenv
 from google import genai
 from google.genai import errors
 
-
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
 ENV_FILE = PROJECT_ROOT / "Day06" / ".env"
 

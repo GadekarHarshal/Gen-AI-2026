@@ -1,6 +1,5 @@
 
 from app.vectorstore import semantic_search
-from app.llm_provider import GeminiProvider
 
 
 def retrieve_context(question, top_k=5):

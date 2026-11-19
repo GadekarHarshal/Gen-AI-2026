@@ -1,10 +1,11 @@
 
+import os
+
 import requests
 import streamlit as st
 
 from ui.feedback import save_feedback
 from ui.planner import render_planner
-
 
 # ==========================================
 # PAGE CONFIGURATION
@@ -16,7 +17,11 @@ st.set_page_config(
     layout="wide"
 )
 
-API_URL = "http://127.0.0.1:8000"
+# Local default; Docker Compose can override this.
+API_URL = os.getenv(
+    "API_URL",
+    "http://127.0.0.1:8000"
+)
 
 
 # ==========================================
@@ -97,7 +102,6 @@ with chat_tab:
     )
 
     # Reserve the chat-history position above the input.
-    # Messages are rendered inside this container.
     chat_container = st.container()
 
     # Chat input stays after the history container.
@@ -118,112 +122,108 @@ with chat_tab:
         })
 
         # Show processing status in the chat area.
-        with chat_container:
+        with chat_container, st.chat_message("assistant"), st.spinner("Thinking..."):
 
-            with st.chat_message("assistant"):
+            try:
 
-                with st.spinner("Thinking..."):
+                payload = {
+                    "question": question
+                }
 
-                    try:
+                if st.session_state.thread_id:
 
-                        payload = {
-                            "question": question
-                        }
+                    payload["thread_id"] = (
+                        st.session_state.thread_id
+                    )
 
-                        if st.session_state.thread_id:
+                response = requests.post(
+                    f"{API_URL}/agent",
+                    json=payload,
+                    timeout=120
+                )
 
-                            payload["thread_id"] = (
-                                st.session_state.thread_id
-                            )
+                response.raise_for_status()
 
-                        response = requests.post(
-                            f"{API_URL}/agent",
-                            json=payload,
-                            timeout=120
-                        )
+                result = response.json()
 
-                        response.raise_for_status()
+                status = result.get("status")
 
-                        result = response.json()
+                answer = result.get(
+                    "answer",
+                    "No answer received."
+                )
 
-                        status = result.get("status")
+                sources = result.get("sources", [])
 
-                        answer = result.get(
-                            "answer",
-                            "No answer received."
-                        )
+                if result.get("thread_id"):
 
-                        sources = result.get("sources", [])
+                    st.session_state.thread_id = (
+                        result["thread_id"]
+                    )
 
-                        if result.get("thread_id"):
+                if status == "approval_required":
 
-                            st.session_state.thread_id = (
-                                result["thread_id"]
-                            )
+                    answer = (
+                        "Your course plan requires approval "
+                        "before execution. Please use the "
+                        "approval workflow in the API."
+                    )
 
-                        if status == "approval_required":
+                    sources = []
 
-                            answer = (
-                                "Your course plan requires approval "
-                                "before execution. Please use the "
-                                "approval workflow in the API."
-                            )
+                    st.warning(
+                        "Approval is required. "
+                        "The course plan has not been executed."
+                    )
 
-                            sources = []
+                st.session_state.messages.append({
+                    "role": "assistant",
+                    "content": answer,
+                    "sources": sources
+                })
 
-                            st.warning(
-                                "Approval is required. "
-                                "The course plan has not been executed."
-                            )
+            except requests.exceptions.Timeout:
 
-                        st.session_state.messages.append({
-                            "role": "assistant",
-                            "content": answer,
-                            "sources": sources
-                        })
+                st.session_state.messages.append({
+                    "role": "assistant",
+                    "content": (
+                        "The backend request timed out. "
+                        "Please try again."
+                    ),
+                    "sources": []
+                })
 
-                    except requests.exceptions.Timeout:
+            except requests.exceptions.ConnectionError:
 
-                        st.session_state.messages.append({
-                            "role": "assistant",
-                            "content": (
-                                "The backend request timed out. "
-                                "Please try again."
-                            ),
-                            "sources": []
-                        })
+                st.session_state.messages.append({
+                    "role": "assistant",
+                    "content": (
+                        "Unable to connect to the NPTELPicker "
+                        "backend. Please make sure FastAPI is running."
+                    ),
+                    "sources": []
+                })
 
-                    except requests.exceptions.ConnectionError:
+            except requests.exceptions.RequestException:
 
-                        st.session_state.messages.append({
-                            "role": "assistant",
-                            "content": (
-                                "Unable to connect to the NPTELPicker "
-                                "backend. Please make sure FastAPI is running."
-                            ),
-                            "sources": []
-                        })
+                st.session_state.messages.append({
+                    "role": "assistant",
+                    "content": (
+                        "An error occurred while communicating "
+                        "with the backend."
+                    ),
+                    "sources": []
+                })
 
-                    except requests.exceptions.RequestException:
+            except ValueError:
 
-                        st.session_state.messages.append({
-                            "role": "assistant",
-                            "content": (
-                                "An error occurred while communicating "
-                                "with the backend."
-                            ),
-                            "sources": []
-                        })
-
-                    except ValueError:
-
-                        st.session_state.messages.append({
-                            "role": "assistant",
-                            "content": (
-                                "The backend returned an invalid response."
-                            ),
-                            "sources": []
-                        })
+                st.session_state.messages.append({
+                    "role": "assistant",
+                    "content": (
+                        "The backend returned an invalid response."
+                    ),
+                    "sources": []
+                })
 
     # ======================================
     # DISPLAY COMPLETE CHAT HISTORY

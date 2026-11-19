@@ -1,7 +1,6 @@
 
 from app.records import get_by_id
 
-
 # Planned credit mapping
 CREDIT_MAPPING = {
     4: 1,

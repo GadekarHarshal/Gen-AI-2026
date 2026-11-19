@@ -2,16 +2,14 @@
 import json
 import uuid
 from pathlib import Path
-from typing import Optional
 
 from fastapi import FastAPI, HTTPException, Query
 from google.genai import errors
 from pydantic import BaseModel, Field
 
+from app.graph import resume_graph, run_graph
 from app.llm_provider import GeminiProvider
 from app.schemas import ChatRequest, ChatResponse
-from app.graph import run_graph, resume_graph
-
 
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
 
@@ -38,7 +36,7 @@ app = FastAPI(
 # Request models for LangGraph endpoints
 class AgentRequest(BaseModel):
     question: str = Field(min_length=3, max_length=1000)
-    thread_id: Optional[str] = None
+    thread_id: str | None = None
 
 
 class ApprovalRequest(BaseModel):
@@ -195,7 +193,7 @@ Return only the required JSON response.
 def search_semantic(q: str = Query(..., min_length=1)):
 
     try:
-        from app.vectorstore import semantic_search, get_collection_count
+        from app.vectorstore import get_collection_count, semantic_search
 
         if get_collection_count() == 0:
             raise HTTPException(

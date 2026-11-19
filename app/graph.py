@@ -1,16 +1,15 @@
 
-from typing import TypedDict, Optional, Annotated
 import operator
 import uuid
+from typing import Annotated, TypedDict
 
-from langgraph.graph import StateGraph, START, END
 from langgraph.checkpoint.memory import InMemorySaver
-from langgraph.types import interrupt, Command
+from langgraph.graph import END, START, StateGraph
+from langgraph.types import Command, interrupt
 
 from app.agent_loop import parse_agent_decision
 from app.rag import generate_rag_answer
 from app.tools import course_plan_checker
-
 
 # Keep providers outside checkpointed graph state.
 PROVIDERS = {}
@@ -18,12 +17,12 @@ PROVIDERS = {}
 
 class AgentState(TypedDict):
     question: str
-    tool: Optional[str]
+    tool: str | None
     course_ids: list[str]
-    available_hours_per_week: Optional[float]
-    answer: Optional[str]
+    available_hours_per_week: float | None
+    answer: str | None
     sources: list[dict]
-    data: Optional[dict]
+    data: dict | None
     conversation_history: Annotated[list[str], operator.add]
 
 
@@ -184,7 +183,7 @@ def build_agent_graph():
 AGENT_GRAPH = build_agent_graph()
 
 
-def run_graph(question: str, provider, thread_id: Optional[str] = None):
+def run_graph(question: str, provider, thread_id: str | None = None):
     if not question or not question.strip():
         raise ValueError("Question cannot be empty.")
 

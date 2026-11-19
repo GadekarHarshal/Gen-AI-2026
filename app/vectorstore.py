@@ -6,7 +6,6 @@ import chromadb
 from app.chunking import chunk_documents
 from app.embed import generate_embedding, generate_embeddings
 
-
 DB_PATH = Path(__file__).resolve().parent.parent / "data" / "chroma_db"
 COLLECTION_NAME = "nptel_courses"
 

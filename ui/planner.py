@@ -7,7 +7,6 @@ import altair as alt
 import pandas as pd
 import streamlit as st
 
-
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
 RECORDS_FILE = PROJECT_ROOT / "data" / "records.json"
 

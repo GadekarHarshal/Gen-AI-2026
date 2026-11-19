@@ -1,7 +1,8 @@
 
 import csv
-import requests
 from pathlib import Path
+
+import requests
 
 CSV_FILE = Path("data/course_metadata.csv")
 RAW_FOLDER = Path("data/raw")

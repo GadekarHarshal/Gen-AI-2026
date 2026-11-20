@@ -1,3 +1,5 @@
+![NPTELPicker CI](https://github.com/GadekarHarshal/Gen-AI-2026/actions/workflows/ci.yml/badge.svg)
+
 # NPTELPicker
 ### NPTEL Course Discovery and Selection Assistant
 

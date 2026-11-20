@@ -1,6 +1,7 @@
 
 import json
 import uuid
+from contextlib import asynccontextmanager
 from pathlib import Path
 
 from fastapi import FastAPI, HTTPException, Query
@@ -26,10 +27,42 @@ COMPARISON_PROMPT_FILE = (
 )
 
 
+# Initialize ChromaDB when FastAPI starts
+@asynccontextmanager
+async def lifespan(app: FastAPI):
+    from app.vectorstore import get_collection_count, index_documents
+
+    try:
+        count = get_collection_count()
+
+        if count == 0:
+            print("ChromaDB is empty. Indexing course records...")
+
+            indexed_count = index_documents()
+
+            print(
+                f"Indexed {indexed_count} course chunks into ChromaDB."
+            )
+        else:
+            print(
+                f"ChromaDB already contains {count} course chunks."
+            )
+
+    except Exception as error:
+        print(f"ChromaDB initialization failed: {error}")
+        raise
+
+    yield
+
+
 app = FastAPI(
     title="NPTELPicker AI Assistant",
-    description="AI-powered NPTEL course assistant using Google Gemini and LangGraph",
-    version="1.1.0"
+    description=(
+        "AI-powered NPTEL course assistant "
+        "using Google Gemini and LangGraph"
+    ),
+    version="1.1.0",
+    lifespan=lifespan
 )
 
 
@@ -274,7 +307,6 @@ def ask(request: ChatRequest):
         )
 
 
-# NEW: LangGraph agent endpoint
 @app.post("/agent")
 def agent(request: AgentRequest):
 
@@ -324,7 +356,6 @@ def agent(request: AgentRequest):
         )
 
 
-# NEW: Resume LangGraph after human approval
 @app.post("/agent/approve")
 def agent_approve(request: ApprovalRequest):
 

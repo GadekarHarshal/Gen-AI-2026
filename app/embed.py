@@ -7,12 +7,14 @@ from google import genai
 
 ENV_FILE = Path(__file__).resolve().parent.parent / "Day06" / ".env"
 
+# Load local environment variables if the file exists.
+# Render will provide GEMINI_API_KEY through its environment settings.
 load_dotenv(ENV_FILE)
 
 api_key = os.getenv("GEMINI_API_KEY")
 
 if not api_key:
-    raise ValueError("GEMINI_API_KEY not found in Day06/.env")
+    raise ValueError("GEMINI_API_KEY environment variable not found.")
 
 client = genai.Client(api_key=api_key)
 

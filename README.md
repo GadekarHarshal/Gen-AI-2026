@@ -291,3 +291,31 @@ docker compose down
 ## Project Repository
 
 GitHub: https://github.com/GadekarHarshal/Gen-AI-2026
+
+
+
+## Live Deployment
+
+NPTELPicker is deployed on Render.
+
+| Service | Live URL |
+|---|---|
+| Streamlit Frontend | https://nptelpicker-ui.onrender.com |
+| FastAPI Backend | https://nptelpicker-api.onrender.com |
+| API Documentation | https://nptelpicker-api.onrender.com/docs |
+| Health Check | https://nptelpicker-api.onrender.com/health |
+
+### Deployment Features
+
+- Backend deployed as a FastAPI web service.
+- Frontend deployed as a separate Streamlit web service.
+- Google Gemini API integration.
+- ChromaDB course indexing during backend startup.
+- GitHub Actions CI pipeline.
+- Automated code-quality checks using Ruff.
+- Automated testing using Pytest.
+- Docker image build verification.
+
+**Hosting Platform:** Render
+
+**CI/CD Platform:** GitHub Actions

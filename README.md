@@ -1,4 +1,4 @@
-![NPTELPicker CI](https://github.com/GadekarHarshal/Gen-AI-2026/actions/workflows/ci.yml/badge.svg)
+[![NPTELPicker CI](https://github.com/GadekarHarshal/Gen-AI-2026/actions/workflows/ci.yml/badge.svg)](https://github.com/GadekarHarshal/Gen-AI-2026/actions/workflows/ci.yml)
 
 # NPTELPicker
 ### NPTEL Course Discovery and Selection Assistant
@@ -38,8 +38,15 @@ To recommend suitable NPTEL courses based on a student's branch, year and learni
 - Course information retrieval using ChromaDB.
 - LangGraph-based AI agent.
 - Semester Planner with course selection and timeline.
+- Exam clash detection.
+- Weekly workload estimation.
 - Feedback collection.
+- Response caching.
+- Gemini API latency and token usage monitoring.
+- Input validation and request limits.
+- Prompt-injection protection instructions.
 - Dockerized FastAPI backend and Streamlit frontend.
+- GitHub Actions CI pipeline.
 
 ## Day 1 Activities
 
@@ -145,6 +152,88 @@ Config B was selected because it achieved the same evaluation score while genera
 | Semester Planner | Passed |
 | AI Chat with Gemini | Passed |
 
+## Day 12 – CI/CD and Deployment
+
+### S1 – GitHub Actions CI Pipeline
+
+- Created a GitHub Actions workflow at `.github/workflows/ci.yml`.
+- Configured automated execution on pushes and pull requests.
+- Integrated Ruff for Python code quality checks.
+- Integrated Pytest for automated testing.
+- Added Docker image build verification.
+- Created a GitHub Actions status badge.
+- Created and merged Pull Request #1.
+
+### S2 – Cloud Deployment
+
+- Deployed the FastAPI backend on Render.
+- Deployed the Streamlit frontend as a separate Render service.
+- Configured the Gemini API key through Render environment variables.
+- Configured the frontend to communicate with the deployed backend.
+- Added automatic ChromaDB indexing during backend startup.
+- Verified the live API health endpoint.
+- Tested Gemini-powered course recommendations.
+- Tested the deployed Semester Planner.
+- Verified the live application and backend connectivity.
+
+### Day 12 Deployment Details
+
+| Component | Platform | Status |
+|---|---|---|
+| FastAPI Backend | Render | Deployed |
+| Streamlit Frontend | Render | Deployed |
+| AI Integration | Google Gemini | Verified |
+| Vector Database | ChromaDB | Verified |
+| CI Pipeline | GitHub Actions | Passed |
+| Containerization | Docker | Verified |
+
+## Day 13 – Performance, Validation and Security
+
+### S1 – Performance Monitoring
+
+- Implemented Gemini API response latency monitoring.
+- Captured input, output and total token usage.
+- Added structured logging for Gemini requests.
+- Implemented an in-memory response cache using `OrderedDict`.
+- Added cache HIT and MISS logging.
+- Configured a maximum cache capacity of 100 responses.
+- Implemented automatic removal of the oldest cached response when the cache reaches capacity.
+
+### S1 – Input Validation
+
+- Implemented reusable Pydantic question validation.
+- Added a minimum question length of 3 characters.
+- Added a maximum question length of 1,000 characters.
+- Added automatic whitespace trimming.
+- Applied consistent question validation to Chat and Agent requests.
+- Added a maximum query length for semantic search.
+
+### S1 – Prompt Injection Protection
+
+- Strengthened the system prompt with security instructions.
+- Added protection against attempts to override system instructions.
+- Added rules against revealing system prompts and confidential information.
+- Added instructions to treat student inputs and retrieved documents as untrusted data.
+- Tested three prompt-injection attempts:
+  - Ignore previous instructions.
+  - Reveal the system prompt.
+  - Reveal the Gemini API key.
+- All three test attempts were refused by the model.
+
+### Day 13 Testing Results
+
+| Test | Result |
+|---|---|
+| Complete project tests | 45 passed |
+| Ruff checks | Passed |
+| Python syntax checks | Passed |
+| Gemini latency logging | Verified |
+| Token usage logging | Verified |
+| Response cache MISS | Verified |
+| Response cache HIT | Verified |
+| Input validation | Implemented |
+| Prompt-injection tests | 3/3 refused |
+
 ## Technologies Used
 
 - Python
@@ -163,6 +252,8 @@ Config B was selected because it achieved the same evaluation score while genera
 - Pytest
 - Ruff
 - Git and GitHub
+- GitHub Actions
+- Render
 - Visual Studio Code
 
 ## Installation and Setup
@@ -288,12 +379,6 @@ docker compose down
 
 **Note:** Docker Compose uses `Day06/.env` to provide Gemini credentials to the backend. The local ChromaDB directory is mounted into the API container to preserve its data.
 
-## Project Repository
-
-GitHub: https://github.com/GadekarHarshal/Gen-AI-2026
-
-
-
 ## Live Deployment
 
 NPTELPicker is deployed on Render.
@@ -305,17 +390,25 @@ NPTELPicker is deployed on Render.
 | API Documentation | https://nptelpicker-api.onrender.com/docs |
 | Health Check | https://nptelpicker-api.onrender.com/health |
 
-### Deployment Features
+### Deployment Configuration
 
-- Backend deployed as a FastAPI web service.
-- Frontend deployed as a separate Streamlit web service.
-- Google Gemini API integration.
-- ChromaDB course indexing during backend startup.
-- GitHub Actions CI pipeline.
-- Automated code-quality checks using Ruff.
-- Automated testing using Pytest.
-- Docker image build verification.
+- Hosting Platform: Render
+- Backend: FastAPI
+- Frontend: Streamlit
+- AI Provider: Google Gemini
+- Vector Database: ChromaDB
+- CI/CD: GitHub Actions
+- Containerization: Docker
 
-**Hosting Platform:** Render
+**Deployment Note:** Render Free services may sleep after inactivity. Their filesystem is temporary, so the ChromaDB index may need to be rebuilt when the backend restarts.
 
-**CI/CD Platform:** GitHub Actions
+## Project Repository
+
+GitHub: https://github.com/GadekarHarshal/Gen-AI-2026
+
+## Project Links
+
+- Live Application: https://nptelpicker-ui.onrender.com
+- Backend API: https://nptelpicker-api.onrender.com
+- API Documentation: https://nptelpicker-api.onrender.com/docs
+- GitHub Repository: https://github.com/GadekarHarshal/Gen-AI-2026

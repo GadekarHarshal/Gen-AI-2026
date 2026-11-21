@@ -10,7 +10,7 @@ from pydantic import BaseModel, Field
 
 from app.graph import resume_graph, run_graph
 from app.llm_provider import GeminiProvider
-from app.schemas import ChatRequest, ChatResponse
+from app.schemas import ChatRequest, ChatResponse, QuestionText
 
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
 
@@ -68,7 +68,7 @@ app = FastAPI(
 
 # Request models for LangGraph endpoints
 class AgentRequest(BaseModel):
-    question: str = Field(min_length=3, max_length=1000)
+    question: QuestionText
     thread_id: str | None = None
 
 
@@ -223,7 +223,7 @@ Return only the required JSON response.
 
 
 @app.get("/search/semantic")
-def search_semantic(q: str = Query(..., min_length=1)):
+def search_semantic(q: str = Query(..., min_length=1, max_length=1000)):
 
     try:
         from app.vectorstore import get_collection_count, semantic_search

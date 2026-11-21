@@ -1,12 +1,21 @@
 
-from pydantic import BaseModel, Field
+from typing import Annotated
+
+from pydantic import BaseModel, Field, StringConstraints
+
+QuestionText = Annotated[
+    str,
+    StringConstraints(
+        strip_whitespace=True,
+        min_length=3,
+        max_length=1000
+    )
+]
 
 
 class ChatRequest(BaseModel):
-    question: str = Field(
+    question: QuestionText = Field(
         ...,
-        min_length=3,
-        max_length=1000,
         description="Student's NPTEL-related question"
     )
 

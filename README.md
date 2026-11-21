@@ -1,6 +1,7 @@
 [![NPTELPicker CI](https://github.com/GadekarHarshal/Gen-AI-2026/actions/workflows/ci.yml/badge.svg)](https://github.com/GadekarHarshal/Gen-AI-2026/actions/workflows/ci.yml)
 
 # NPTELPicker
+
 ### NPTEL Course Discovery and Selection Assistant
 
 ## Project Card
@@ -27,6 +28,32 @@ Students find it difficult to select suitable NPTEL courses from the large cours
 ## Project Goal
 
 To recommend suitable NPTEL courses based on a student's branch, year and learning goals using available course information.
+
+## System Architecture
+
+```mermaid
+flowchart TD
+    A[Student] --> B[Streamlit Frontend]
+    B --> C[FastAPI Backend]
+
+    C --> D[LangGraph Agent]
+    C --> E[RAG Pipeline]
+
+    D --> F[Course Plan Checker]
+
+    E --> G[ChromaDB Vector Store]
+    G --> H[Relevant Course Context]
+
+    F --> I[Google Gemini]
+    H --> I
+
+    I --> J[Generated Response]
+    J --> B
+
+    K[NPTEL Course Data] --> L[Data Ingestion]
+    L --> M[Chunking and Embeddings]
+    M --> G
+```
 
 ## Main Features
 
@@ -233,6 +260,12 @@ Config B was selected because it achieved the same evaluation score while genera
 | Response cache HIT | Verified |
 | Input validation | Implemented |
 | Prompt-injection tests | 3/3 refused |
+
+### Production Notes
+
+Additional information about performance monitoring, response caching, validation, security and deployment considerations:
+
+[Production Notes](docs/production_notes.md)
 
 ## Technologies Used
 

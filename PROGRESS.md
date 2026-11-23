@@ -15,7 +15,7 @@
 - [x] Day 11 – Testing, Ruff and Docker setup
 - [x] Day 12 – GitHub Actions CI and Render deployment
 - [x] Day 13 – Logging, caching, validation and production documentation
-- [ ] Day 14 – Final project review and interview preparation
+- [x] Day 14 – Final project review and interview preparation
 
 ## Day 14 Checklist
 
@@ -27,10 +27,10 @@
 - [x] Inspect RAG retrieval and answer generation
 - [x] Prepare technical interview explanation
 - [x] Review and update project progress
-- [ ] Rehearse complete project demonstration
-- [ ] Verify frontend and backend deployment
-- [ ] Run final tests and quality checks
-- [ ] Create final Git checkpoint
+- [x] Rehearse complete project demonstration
+- [x] Verify frontend and backend deployment
+- [x] Run final tests and quality checks
+- [x] Create final Git checkpoint
 
 ## Deployment
 
@@ -47,4 +47,16 @@
 NPTELPicker is an AI-powered NPTEL course discovery and selection assistant built using Python, FastAPI, Streamlit, Google Gemini, LangChain, LangGraph and ChromaDB.
 
 The project includes semantic search, RAG-based question answering, an AI agent, a Semester Planner, automated testing, CI and cloud deployment.
+
+
+
+## Final Verification
+
+- Pytest: 45 passed
+- Ruff: All checks passed
+- Backend health: Healthy
+- Frontend: Connected
+- AI Chat and RAG: Verified
+- Semester Planner: Verified
+- Docker build: Blocked – Docker Desktop Linux engine unavailable
 
